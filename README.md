@@ -1,3 +1,40 @@
+## Install Breeze
+
+Terminal
+![Screenshot (32)](https://github.com/user-attachments/assets/72fffd59-9e00-449f-adaf-2d3722126a32)
+
+![Screenshot (33)](https://github.com/user-attachments/assets/575cc9ff-6060-4752-ab40-d40cbf293f68)
+
+![Screenshot (34)](https://github.com/user-attachments/assets/027997bc-9463-4b91-b747-c96217be3d63)
+
+![Screenshot (35)](https://github.com/user-attachments/assets/e0ae6d58-20fb-4a74-9647-f614fcf8d708)
+
+![Screenshot (36)](https://github.com/user-attachments/assets/dc1d9aba-3149-49ec-9bfa-b2add4cefcc8)
+
+![Screenshot (37)](https://github.com/user-attachments/assets/e3daa79a-c0f5-4e2a-b0be-35f7cb41139b)
+
+VSCode - web.php
+![Screenshot (42)](https://github.com/user-attachments/assets/370f05af-fbb2-41df-bd16-78cdde63e517)
+
+Browser
+Register Admin
+![Screenshot (48)](https://github.com/user-attachments/assets/df0bfb32-3ce0-4acb-a06a-88ea9ef5f532)
+
+Dashboard Admin
+![Screenshot (39)](https://github.com/user-attachments/assets/9491ef6c-693c-4fba-8708-0df21103b424)
+
+Register Nama Lengkap
+![Screenshot (49)](https://github.com/user-attachments/assets/c751bddd-9bed-47f3-85e3-00e6d7708a05)
+
+Dashboard Nama Lengkap
+![Screenshot (41)](https://github.com/user-attachments/assets/9e0f63a1-2fb0-4f16-88ed-fd4c51a28726)
+
+Login Nama Lengkap
+![Screenshot (46)](https://github.com/user-attachments/assets/420e34fe-2eef-4f75-9f99-f4109f9f2fa1)
+
+Database
+![Screenshot (50)](https://github.com/user-attachments/assets/ab98cb5e-65cb-48de-87b9-135d87ae2d38)
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
