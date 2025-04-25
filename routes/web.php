@@ -14,12 +14,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('todo', TodoController::class)->except(['show']);
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/todo', [TodoController::class, 'view'])->name('todo.view');
-Route::get('/user', [UserController::class, 'view'])->name('user.view');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
 
 require __DIR__.'/auth.php';

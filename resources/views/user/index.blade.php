@@ -1,15 +1,69 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-x1 text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('User.index') }}
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('User') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7x1 mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Welcome User Index!") }}
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
+        <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg">
+            <form method="GET" action="{{ route('user.index') }}" class="px-6 py-4">
+                <div class="flex items-center gap-2">
+                    <input
+                        type="text"
+                        name="search"
+                        value="{{ request('search') }}"
+                        placeholder="Search Name or Email"
+                        class="px-4 py-2 w-full sm:w-1/3 rounded-lg border dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                    />
+                    <button type="submit" class="px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-100">
+                        Search
+                    </button>                    
+                    @if(request('search'))
+                        <a href="{{ route('user.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                            Reset
+                        </a>
+                    @endif
+                </div>
+            </form>            
+            
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">ID</th>
+                            <th scope="col" class="px-6 py-3">NAMA</th>
+                            <th scope="col" class="px-6 py-3">TODO</th>
+                            <th scope="col" class="px-6 py-3">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($users as $data)
+                            <tr class="border-b odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 dark:border-gray-700">
+                                <td class="px-6 py-4 font-medium text-white whitespace-nowrap">{{ $data->id }}</td>
+                                <td class="px-6 py-4 text-white">{{ $data->name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-white">
+                                    {{ $data->todos->count() }}
+                                    <span>
+                                        (<span class="text-green-400">{{ $data->todos->where('is_done', true)->count() }}</span>/
+                                        <span class="text-blue-400">{{ $data->todos->where('is_done', false)->count() }}</span>)
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 text-white">—</td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="4" class="px-6 py-4 text-center text-gray-400">No data available</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+
+            {{-- Pagination --}}
+            <div class="px-6 py-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex justify-end">
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>
