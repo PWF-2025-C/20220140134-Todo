@@ -1,7 +1,7 @@
 # Tugas 5
 
 ## 1. Todo Create
-![alt text](<screenshoot\tugas5\create_todo.png>)
+![alt text](<screenshoot/tugas5/create_todo.png>)
 
 ## 2. Todo Created
 ![alt text](<screenshoot/tugas5/todo_created.png>)
