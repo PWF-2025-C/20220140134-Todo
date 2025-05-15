@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Todo') }}
+            {{ __('Category') }}
         </h2>
     </x-slot>
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-4">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <form method="POST" action="{{ route('todo.update', $todo) }}">
+                <form method="POST" action="{{ route('categories.update', $category) }}">
                     @csrf
                     @method('PATCH')
 
@@ -20,30 +20,14 @@
                         <input 
                             type="text" 
                             name="title"
-                            value="{{ old('title', $todo->title) }}"
+                            value="{{ old('title', $category->title) }}"
                             class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                            placeholder="Input Todo Title" 
+                            placeholder="Input Category Title"
                             required
                         >
-                    </div>
-
-                    {{-- Category --}}
-                    <div class="mb-6">
-                        <label class="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-2">
-                            Category
-                        </label>
-                        <select 
-                            name="category_id" 
-                            class="w-full px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
-                            required
-                        >
-                            <option value="" disabled {{ is_null($todo->category_id) ? 'selected' : '' }}>Choose Category</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}" {{ $todo->category_id == $category->id ? 'selected' : '' }}>
-                                    {{ $category->title }}
-                                </option>
-                            @endforeach
-                        </select>
+                        @error('title')
+                            <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="flex items-center gap-2">
@@ -54,7 +38,7 @@
                             Save
                         </button>
                         <a 
-                            href="{{ route('todo.index') }}"
+                            href="{{ route('categories.index') }}"
                             class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg shadow-sm border border-red-700 dark:border-red-800 transition duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
                         >
                             Cancel

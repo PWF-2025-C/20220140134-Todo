@@ -24,6 +24,7 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
                                 <th scope="col" class="px-6 py-3">Title</th>
+                                <th scope="col" class="px-6 py-3">Category</th>
                                 <th scope="col" class="px-6 py-3">Status</th>
                                 <th scope="col" class="px-6 py-3">Action</th>
                             </tr>
@@ -35,6 +36,9 @@
                                         <a href="{{ route('todo.edit', $data) }}" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200">
                                             {{ $data->title }}
                                         </a>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ $data->category->title ?? '-' }}
                                     </td>
                                     <td class="px-6 py-4">
                                         @if (!$data->is_done)
@@ -66,8 +70,7 @@
                                                     </button>
                                                 </form>
                                             @endif
-
-                                            {{-- Delete Button --}}
+                        
                                             <form action="{{ route('todo.destroy', $data) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
@@ -80,12 +83,12 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="3" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
+                                    <td colspan="4" class="px-6 py-4 text-center text-gray-500 dark:text-gray-400">
                                         No todos found
                                     </td>
                                 </tr>
                             @endforelse
-                        </tbody>
+                        </tbody>                        
                     </table>
                 </div>
             </div>
