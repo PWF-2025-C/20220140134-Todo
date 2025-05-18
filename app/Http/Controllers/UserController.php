@@ -8,24 +8,24 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     public function index()
-    {
-        $search = request('search');
+{
+    $search = request('search');
 
-        $query = User::query()
-            ->where('id', '!=', 1)
-            ->orderBy('name');
-
-        if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('name', 'like', "%{$search}%")
-                  ->orWhere('email', 'like', "%{$search}%");
-            });
-        }
-
-        $users = $query->paginate(20)->withQueryString();
-
-        return view('user.index', compact('users'));
+    if ($search) {
+        $users = User::with('todos')->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+        })->where('id', '!=', 1)
+          ->orderBy('name')
+          ->paginate(10); 
+    } else {
+        $users = User::with('todos')->where('id', '!=', 1)
+                     ->orderBy('name')
+                     ->paginate(10);
     }
+
+    return view('user.index', compact('users'));
+}
 
     public function create()
     {
